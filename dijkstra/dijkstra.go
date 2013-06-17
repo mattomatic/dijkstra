@@ -27,26 +27,26 @@ func Dijkstra(g *graph.Graph, s *graph.Node) PathMap {
 // Determine which nodes are unreachable from s and set their values in p
 // to be MAXWEIGHT
 func precompute(s *graph.Node, g *graph.Graph, p PathMap) {
-    dfs(s)
-    
-    for node := range g.GetNodes() {
-        if node.Visited == false {
-            p[node] = MAXWEIGHT
-            g.RemoveNodes(node)
-        }
-    }
+	dfs(s)
+
+	for node := range g.GetNodes() {
+		if node.Visited == false {
+			p[node] = MAXWEIGHT
+			g.RemoveNodes(node)
+		}
+	}
 }
 
 func dfs(node *graph.Node) {
-    if node.Visited {
-        return
-    }
-    
-    node.Visited = true
-    
-    for edge := range node.GetEdges() {
-        dfs(edge.Tail)
-    }
+	if node.Visited {
+		return
+	}
+
+	node.Visited = true
+
+	for edge := range node.GetEdges() {
+		dfs(edge.Tail)
+	}
 }
 
 func initialize(v *graph.Graph, u *graph.Graph, s *graph.Node, p PathMap) {

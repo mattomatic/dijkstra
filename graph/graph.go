@@ -11,9 +11,9 @@ type Edge struct {
 }
 
 type Node struct {
-	Id    int
+	Id      int
 	Visited bool
-	edges []*Edge
+	edges   []*Edge
 }
 
 func NewGraph() *Graph {

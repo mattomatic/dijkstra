@@ -17,8 +17,8 @@ func LoadGraph(filename string) *Graph {
 		fields := strings.Split(line, " ")
 		headId := atoi(fields[0])
 		edges := fields[1:]
-	
-        getOrCreate(g, headId)
+
+		getOrCreate(g, headId)
 
 		for _, pair := range edges {
 			if len(strings.Split(pair, ",")) == 1 {
@@ -38,14 +38,14 @@ func LoadGraph(filename string) *Graph {
 	return g
 }
 
-func atoi(s string) (int) {
-    result, err := strconv.Atoi(s)
-    
-    if err != nil {
-        panic("failed to convert string")
-    }
-    
-    return result
+func atoi(s string) int {
+	result, err := strconv.Atoi(s)
+
+	if err != nil {
+		panic("failed to convert string")
+	}
+
+	return result
 }
 
 func getOrCreate(g *Graph, id int) *Node {
@@ -81,9 +81,9 @@ func getLines(reader *bufio.Reader) chan string {
 			if err != nil {
 				break
 			}
-			
+
 			if strings.HasPrefix(line, "#") {
-			    continue
+				continue
 			}
 
 			ch <- strings.Trim(line, "\n")
