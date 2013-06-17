@@ -6,7 +6,7 @@ import (
 
 type PathMap map[*graph.Node]int
 
-const MAXWEIGHT = 1000000 // insert any biggish number here
+const MAXWEIGHT = 1000000 // a token maximum value
 
 // Compute the shortest path from the source node to each other node in the graph
 func Dijkstra(g *graph.Graph, s *graph.Node) PathMap {
@@ -27,7 +27,26 @@ func Dijkstra(g *graph.Graph, s *graph.Node) PathMap {
 // Determine which nodes are unreachable from s and set their values in p
 // to be MAXWEIGHT
 func precompute(s *graph.Node, g *graph.Graph, p PathMap) {
+    dfs(s)
+    
+    for node := range g.GetNodes() {
+        if node.Visited == false {
+            p[node] = MAXWEIGHT
+            g.RemoveNodes(node)
+        }
+    }
+}
 
+func dfs(node *graph.Node) {
+    if node.Visited {
+        return
+    }
+    
+    node.Visited = true
+    
+    for edge := range node.GetEdges() {
+        dfs(edge.Tail)
+    }
 }
 
 func initialize(v *graph.Graph, u *graph.Graph, s *graph.Node, p PathMap) {

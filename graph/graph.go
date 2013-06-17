@@ -12,6 +12,7 @@ type Edge struct {
 
 type Node struct {
 	Id    int
+	Visited bool
 	edges []*Edge
 }
 
