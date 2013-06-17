@@ -1,3 +1,3 @@
 dijkstra
 ========
-A straightforward implementation of dijkstra's algorithm for computing shortest paths. 
+A straightforward (read: not optimized) implementation of dijkstra's algorithm for computing shortest paths. 
