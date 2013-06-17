@@ -1,4 +1,4 @@
-package main
+package graph
 
 import (
     "bufio"
@@ -70,7 +70,7 @@ func getLines(reader *bufio.Reader) (chan string) {
                 break
             }
 
-            ch <- line
+            ch <- strings.Trim(line, "\n")
         }
     }()
     
